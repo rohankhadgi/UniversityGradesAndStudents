@@ -12,7 +12,6 @@ namespace GradeCalculationApplication.Models.Entities
         public string StudentName { get; set; }
         [Column(TypeName = "nvarchar(50)")]
         public string StudentNumber { get; set; }
-        [Column(TypeName = "decimal")]
         public decimal? CGPA { get; set; }
         public ICollection<StudentCourseEntity> StudentCourses { get; set; }
     }

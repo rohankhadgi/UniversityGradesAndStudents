@@ -19,7 +19,7 @@
                 <tr *ngFor="let student of studentsService.studentsList">
                     <td (click)="updateStudent(student)">{{student.studentName}}</td>
                     <td (click)="updateStudent(student)">{{student.studentNumber}}</td>
-                    <td (click)="updateStudent(student)">{{student.cGPA}}</td>
+                    <td (click)="updateStudent(student)">{{student.cgpa}}</td>
                     <td>
                         <i class="far fa-chevron-down fa-lg text-info" (click)="toggleStudentCourses()"></i>
                         <table *ngIf="showStudentCourses" class="table">

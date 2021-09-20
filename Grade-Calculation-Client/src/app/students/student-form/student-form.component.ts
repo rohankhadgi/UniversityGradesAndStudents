@@ -5,7 +5,6 @@ import { Student } from 'src/app/shared-services/students.model';
 import { StudentsService } from 'src/app/shared-services/students.service';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { CourseService } from 'src/app/shared-services/courses.service';
-import { Course } from 'src/app/shared-services/courses.model';
 import { StudentCourse } from 'src/app/shared-services/studentcourses.model';
 import { Observable } from 'rxjs';
 import { CourseGradeDropdownOptions } from 'src/app/shared-services/course-grade-dropdown-options';
@@ -45,12 +44,13 @@ export class StudentFormComponent implements OnInit {
     this.courseGradeDropdownSettings = {
       singleSelection: true,
       idField: 'courseID',
-      textField: 'grade',
+      textField: 'gradeViewValue',
       allowSearchFilter: true
     };
   }
 
   onItemSelect(item: any) {
+    console.log('selected items: ', item);
     this.selectedItems.push(item);
   }
 
@@ -62,24 +62,44 @@ export class StudentFormComponent implements OnInit {
 
   createCoursesAndGrades() {
     this.coursesAndGrades.forEach(element => {
-      this.studentService.studentFormData.studentCourses.push(new StudentCourse(this.studentService.studentFormData.studentID, element.courseID, element.grade, true))
+      this.studentService.studentFormData.studentCourses.push(new StudentCourse(this.studentService.studentFormData.studentID, element.courseID, this.getGradeEquivalency(element.gradeViewValue), true))
     });
+    
+    this.toastr.success("Courses added successfully", "Success");    
+  }
+
+  getGradeEquivalency(gradeViewValue: string) {
+    switch(gradeViewValue) {
+      case 'A':
+        return 4;
+      case 'B':
+        return 3;
+      case 'C':
+        return 2;
+      case 'D':
+        return 1;
+      case 'F':
+        return 0;
+      default:
+        return 0;
+    }
   }
 
   getCourseGradeDropDownList(courseID: number) {
 
     const dropdownListOptions: CourseGradeDropdownOptions[] = [
-      new CourseGradeDropdownOptions(courseID, 'A'),
-      new CourseGradeDropdownOptions(courseID, 'B'),
-      new CourseGradeDropdownOptions(courseID, 'C'),
-      new CourseGradeDropdownOptions(courseID, 'D'),
-      new CourseGradeDropdownOptions(courseID, 'F'),
+      new CourseGradeDropdownOptions(courseID, 4, 'A'),
+      new CourseGradeDropdownOptions(courseID, 3, 'B'),
+      new CourseGradeDropdownOptions(courseID, 2, 'C'),
+      new CourseGradeDropdownOptions(courseID, 1, 'D'),
+      new CourseGradeDropdownOptions(courseID, 0, 'F')
     ];
 
     return dropdownListOptions;
   }
 
   onCourseGradeItemSelect(item: any) {
+    console.log('item: ', item);
     this.coursesAndGrades.push(item);
   }
 
@@ -91,12 +111,14 @@ export class StudentFormComponent implements OnInit {
   }
 
   insertStudent(form: NgForm) {
+    console.log('I am here');
     this.studentService.addNewStudent().subscribe(
       val => {
         this.onPostComplete(form);
         this.toastr.success("Student added successfully", "Success");
       }
     );
+    console.log('I am here now');
   }
 
   updateStudent(form: NgForm) {
@@ -111,6 +133,8 @@ export class StudentFormComponent implements OnInit {
   onPostComplete(form: NgForm) {
     form.form.reset();
     this.studentService.studentFormData = new Student();
-    this.studentService.refreshStudentsList();
+    this.studentService.refreshStudentsList();    
+    this.selectedItems = [];
+    this.coursesAndGrades = [];
   }
 }

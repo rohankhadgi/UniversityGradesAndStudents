@@ -79,25 +79,33 @@ namespace GradeCalculationApplication.Controllers
         public async Task<ActionResult<StudentEntity>> PostStudentEntity(StudentEntity studentEntity)
         {
             
+            var courses = await _context.Courses.Where(c => studentEntity.StudentCourses.Select(x => x.CourseID).Contains(c.CourseID)).ToListAsync();
+
+            foreach(var course in studentEntity.StudentCourses)
+            {
+                course.Course = courses.Where(x => x.CourseID == course.CourseID).FirstOrDefault();
+            }
+            
             _context.Students.Add(studentEntity);
             await _context.SaveChangesAsync();
 
             var calculationData = studentEntity.StudentCourses.Where(sc => sc.IsCalculated)
                 .Select(x => new
                 {
-                    QualityPoints = (int)x.Grade * x.Course.CourseCredit,
+                    QualityPoints = x.Grade * x.Course.CourseCredit,
                     CourseCredit = x.Course.CourseCredit
                 }).ToList();
 
-            var totalQualityPoints = calculationData.Sum(x => x.QualityPoints);
-            var totalCredits = calculationData.Sum(x => x.CourseCredit);
+            var totalQualityPoints = (decimal)calculationData.Sum(x => x.QualityPoints);
+            var totalCredits = (decimal)calculationData.Sum(x => x.CourseCredit);
 
-            var gpa = (double)totalQualityPoints / (double)totalCredits;
+            var gpa = totalQualityPoints / totalCredits;
 
-            studentEntity.CGPA = (decimal)gpa;
+            studentEntity.CGPA = gpa;
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetStudentEntity", new { id = studentEntity.StudentID }, studentEntity);
+            return Ok();
         }
 
         // DELETE: api/Students/5

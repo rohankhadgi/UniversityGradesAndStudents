@@ -4,14 +4,16 @@ using GradeCalculationApplication.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GradeCalculationApplication.Migrations
 {
     [DbContext(typeof(GradeCalculationContext))]
-    partial class GradeCalculationContextModelSnapshot : ModelSnapshot
+    [Migration("20210920154447_UpdatedHasPassedEntry")]
+    partial class UpdatedHasPassedEntry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,7 +74,7 @@ namespace GradeCalculationApplication.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal?>("CGPA")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal");
 
                     b.Property<string>("StudentName")
                         .HasColumnType("nvarchar(50)");

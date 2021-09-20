@@ -131,3 +131,6 @@ C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication
 C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\obj\Debug\net5.0\ref\GradeCalculationApplication.dll
 C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\obj\Debug\net5.0\GradeCalculationApplication.pdb
 C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\obj\Debug\net5.0\GradeCalculationApplication.genruntimeconfig.cache
+C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

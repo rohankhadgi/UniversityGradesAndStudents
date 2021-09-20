@@ -4,13 +4,13 @@ import { Student } from "./students.model";
 export class StudentCourse {
     studentID: number=0;
     courseID: number=0;
-    grade: string;
+    grade: number=0;
     isCalculated: boolean=false;
     hasPassed: boolean=false;
     student: Student;
     course: Course;
 
-    constructor(studentID: number, courseID: number, grade: string, isCalculated: boolean) {
+    constructor(studentID: number, courseID: number, grade: number, isCalculated: boolean) {
         this.studentID = studentID;
         this.courseID = courseID;
         this.grade = grade;
