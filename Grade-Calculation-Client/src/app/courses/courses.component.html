@@ -13,7 +13,6 @@
                     <th>Course Name</th>
                     <th>Code</th>
                     <th>Credits</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -22,9 +21,6 @@
                     <td (click)="updateCourse(course)">{{course.courseName}}</td>
                     <td (click)="updateCourse(course)">{{course.courseCode}}</td>
                     <td (click)="updateCourse(course)">{{course.courseCredit}}</td>
-                    <td>
-                        <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(course.courseID)"></i>
-                    </td>
                 </tr>
             </tbody>
         </table>

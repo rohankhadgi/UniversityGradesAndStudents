@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentCourse } from '../shared-services/studentcourses.model';
 import { Student } from '../shared-services/students.model';
 import { StudentsService } from '../shared-services/students.service';
 
@@ -10,6 +11,8 @@ import { StudentsService } from '../shared-services/students.service';
 })
 export class StudentsComponent implements OnInit {
 
+  showStudentCourses = false;
+  
   constructor(public studentsService: StudentsService) { }
 
   ngOnInit(): void {
@@ -22,5 +25,9 @@ export class StudentsComponent implements OnInit {
 
   updateStudent(student: Student) {
     this.studentsService.studentFormData = Object.assign({}, student);
+  }
+  
+  toggleStudentCourses() {
+    this.showStudentCourses = !this.showStudentCourses;
   }
 }

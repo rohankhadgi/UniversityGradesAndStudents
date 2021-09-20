@@ -78,7 +78,23 @@ namespace GradeCalculationApplication.Controllers
         [HttpPost]
         public async Task<ActionResult<StudentEntity>> PostStudentEntity(StudentEntity studentEntity)
         {
+            
             _context.Students.Add(studentEntity);
+            await _context.SaveChangesAsync();
+
+            var calculationData = studentEntity.StudentCourses.Where(sc => sc.IsCalculated)
+                .Select(x => new
+                {
+                    QualityPoints = (int)x.Grade * x.Course.CourseCredit,
+                    CourseCredit = x.Course.CourseCredit
+                }).ToList();
+
+            var totalQualityPoints = calculationData.Sum(x => x.QualityPoints);
+            var totalCredits = calculationData.Sum(x => x.CourseCredit);
+
+            var gpa = (double)totalQualityPoints / (double)totalCredits;
+
+            studentEntity.CGPA = (decimal)gpa;
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetStudentEntity", new { id = studentEntity.StudentID }, studentEntity);

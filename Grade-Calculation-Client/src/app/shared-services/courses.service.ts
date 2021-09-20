@@ -28,6 +28,10 @@ export class CourseService {
       .then(val => this.coursesList = val as Course[]);
   }
 
+  getCourses() {    
+    return this.httpClient.get(this.baseURL);
+  }
+
   deleteCourse(courseID: number) {
 
   }

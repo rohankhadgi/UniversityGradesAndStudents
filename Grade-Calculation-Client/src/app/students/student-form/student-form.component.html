@@ -6,21 +6,55 @@
     [value]="studentService.studentFormData.studentID" />
     <input type="hidden" name="cGPA"
     [value]="studentService.studentFormData.cGPA" />
-    <div>
-        <div class="form-group col-md-6">
+    <div class="form-group col-md-6">
+        <div>
             <label>Student Name</label>
             <input type="text" class="form-control form-control-lg" placeholder="Student Name" name="studentName" 
             #studentName="ngModel" [(ngModel)]="studentService.studentFormData.studentName" required
             [class.invalid]="studentName.invalid && studentName.touched">
         </div>
-        <div class="form-group col-md-6">
+        <div>
             <label>Identification Number</label>
             <input class="form-control form-control-lg" placeholder="Identification Number" name="studentNumber" 
             #studentNumber="ngModel" [(ngModel)]="studentService.studentFormData.studentNumber" required maxlength="9" minlength="9"
             [class.invalid]="studentNumber.invalid && studentNumber.touched">
         </div>
+        <div>
+            <label>Courses Taken</label>
+            <ng-multiselect-dropdown placeholder="Courses Taken"
+                                     [settings]="dropdownSettings"
+                                     [data]="dropdownList | async"
+                                     [(ngModel)]="selectedItems"
+                                     (onSelect)="onItemSelect($event)"
+                                     (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+        </div>
+        <div *ngIf="selectedItems.length > 0">
+            <div *ngFor="let item of selectedItems">
+                <label>{{item.courseName}}</label>
+                <ng-multiselect-dropdown [placeholder]="item.courseName"
+                                         [settings]="courseGradeDropdownSettings"
+                                         [data]="getCourseGradeDropDownList(item.courseID)"
+                                         (onSelect)="onCourseGradeItemSelect($event)">
+                </ng-multiselect-dropdown>
+                <!-- <label>{{item.courseName}}</label>
+                <select class="form-control-lg form-control">
+                    <option [value]="[item.courseID, 'A']">A</option>
+                    <option [value]="[item.courseID, 'B']">B</option>
+                    <option [value]="[item.courseID, 'C']">C</option>
+                    <option [value]="[item.courseID, 'D']">D</option>
+                    <option [value]="[item.courseID, 'F']">F</option>
+                </select> -->
+            </div>
+            <div class="form-group">
+                <br />
+                <button class="btn btn-success" type="button" (click)="createCoursesAndGrades()">Save Grades</button>
+            </div>
+        </div>
     </div>
+
     <div class="form-group">
+        <br />
         <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">Submit</button>
     </div>
 </form>

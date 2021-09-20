@@ -21,7 +21,23 @@
                     <td (click)="updateStudent(student)">{{student.studentNumber}}</td>
                     <td (click)="updateStudent(student)">{{student.cGPA}}</td>
                     <td>
-                        <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(student.studentID)"></i>
+                        <i class="far fa-chevron-down fa-lg text-info" (click)="toggleStudentCourses()"></i>
+                        <table *ngIf="showStudentCourses" class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Credits</th>
+                                    <th>Grade Secured</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let course of student.studentCourses">
+                                    <td>{{course.course.courseName}}</td>
+                                    <td>{{course.course.courseCredit}}</td>
+                                    <td>{{course.grade}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
             </tbody>
