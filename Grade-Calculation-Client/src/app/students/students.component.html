@@ -1,0 +1,30 @@
+<div class="jumbotron">
+    <h1 class="display-4 text-center">Students</h1>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <app-student-form></app-student-form>
+    </div>
+    <div class="col-md-6">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Student Name</th>
+                    <th>Identification Number</th>
+                    <th>CGPA</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of studentsService.studentsList">
+                    <td (click)="updateStudent(student)">{{student.studentName}}</td>
+                    <td (click)="updateStudent(student)">{{student.studentNumber}}</td>
+                    <td (click)="updateStudent(student)">{{student.cGPA}}</td>
+                    <td>
+                        <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(student.studentID)"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="jumbotron">
+    <h1 class="display-6">Add Student</h1>
+</div>
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="studentID"
+    [value]="studentService.studentFormData.studentID" />
+    <input type="hidden" name="cGPA"
+    [value]="studentService.studentFormData.cGPA" />
+    <div>
+        <div class="form-group col-md-6">
+            <label>Student Name</label>
+            <input type="text" class="form-control form-control-lg" placeholder="Student Name" name="studentName" 
+            #studentName="ngModel" [(ngModel)]="studentService.studentFormData.studentName" required
+            [class.invalid]="studentName.invalid && studentName.touched">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Identification Number</label>
+            <input class="form-control form-control-lg" placeholder="Identification Number" name="studentNumber" 
+            #studentNumber="ngModel" [(ngModel)]="studentService.studentFormData.studentNumber" required maxlength="9" minlength="9"
+            [class.invalid]="studentNumber.invalid && studentNumber.touched">
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">Submit</button>
+    </div>
+</form>

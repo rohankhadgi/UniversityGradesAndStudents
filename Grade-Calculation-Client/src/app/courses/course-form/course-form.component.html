@@ -1,0 +1,38 @@
+<div class="jumbotron">
+    <h1 class="display-6">Add Course</h1>
+</div>
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="courseID"
+    [value]="courseService.courseFormData.courseID" />
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label>Course Name</label>
+            <input type="text" class="form-control form-control-lg" placeholder="Course Name" name="courseName" 
+            #courseName="ngModel" [(ngModel)]="courseService.courseFormData.courseName" required
+            [class.invalid]="courseName.invalid && courseName.touched">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Course Code</label>
+            <input class="form-control form-control-lg" placeholder="Course Code" name="courseCode" 
+            #courseCode="ngModel" [(ngModel)]="courseService.courseFormData.courseCode" required maxlength="4" minlength="4"
+            [class.invalid]="courseCode.invalid && courseCode.touched">
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-8">
+            <label>Course Description</label>
+            <input class="form-control form-control-lg" placeholder="Description" name="description" 
+            #description="ngModel" [(ngModel)]="courseService.courseFormData.description" required
+            [class.invalid]="description.invalid && description.touched">
+        </div>
+        <div class="form-group col-md-4">
+            <label>Course Credit</label>
+            <input type="number" class="form-control form-control-lg" placeholder="Course Credit" name="courseCredit" min="1"
+            #courseCredit="ngModel" [(ngModel)]="courseService.courseFormData.courseCredit" required maxlength="1" minlength="1"
+            [class.invalid]="courseCredit.invalid && courseCredit.touched">
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">Submit</button>
+    </div>
+</form>
