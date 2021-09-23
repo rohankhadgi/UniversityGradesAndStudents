@@ -1,9 +1,21 @@
-<div class="container">
+<nav mat-tab-nav-bar backgroundColor="primary">
+  <a mat-tab-link *ngFor="let link of navLinks"
+     [routerLink]="link.path"
+     routerLinkActive
+     #rla="routerLinkActive"
+     [active]="rla.isActive">{{ link.label }}</a>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+
+
+<!-- <div class="container">
   <nav>
     <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" tabindex="0">Home</button>
-      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" tabindex="1">Profile</button>
-      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false" tabindex="2">Contact</button>
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Courses</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Students</button>
     </div>
   </nav>
   <div class="tab-content" id="nav-tabContent">
@@ -12,10 +24,7 @@
       <app-students></app-students>
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-      Test
-    </div>
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-      <app-courses></app-courses>
+      <app-students></app-students>
     </div>
   </div>
-</div> 
+</div>  -->

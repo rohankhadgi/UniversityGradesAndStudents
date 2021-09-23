@@ -1,9 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "5jQfxxI2WLGsOj64V/0D0VJE56qoYOTYGUsk//emMPR7tytT0KajT9VPFqxUfv2+4qLaHNeKuBmcfht1Ia+iZw==",
+  "dgSpecHash": "xgygprE3N3l2JFxToLBYgQd1SIRX7ldX//JNDheixLYYGi2xi4imzyr9TCTqMBWSsIHum+Njquvu5ntKnyXc2w==",
   "success": true,
   "projectFilePath": "C:\\Users\\rohan\\Documents\\Visual Studio 2022\\Projects\\GradeCalculationApplication\\GradeCalculationApplication.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\rohan\\.nuget\\packages\\hotchocolate.abstractions\\11.3.7\\hotchocolate.abstractions.11.3.7.nupkg.sha512",
+    "C:\\Users\\rohan\\.nuget\\packages\\hotchocolate.language\\11.3.7\\hotchocolate.language.11.3.7.nupkg.sha512",
+    "C:\\Users\\rohan\\.nuget\\packages\\hotchocolate.language.syntaxtree\\11.3.7\\hotchocolate.language.syntaxtree.11.3.7.nupkg.sha512",
+    "C:\\Users\\rohan\\.nuget\\packages\\hotchocolate.language.utf8\\11.3.7\\hotchocolate.language.utf8.11.3.7.nupkg.sha512",
+    "C:\\Users\\rohan\\.nuget\\packages\\hotchocolate.language.visitors\\11.3.7\\hotchocolate.language.visitors.11.3.7.nupkg.sha512",
     "C:\\Users\\rohan\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\rohan\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\rohan\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.10\\microsoft.aspnetcore.jsonpatch.5.0.10.nupkg.sha512",
@@ -36,6 +41,7 @@
     "C:\\Users\\rohan\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\rohan\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\rohan\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\rohan\\.nuget\\packages\\microsoft.extensions.objectpool\\3.1.4\\microsoft.extensions.objectpool.3.1.4.nupkg.sha512",
     "C:\\Users\\rohan\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\rohan\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\rohan\\.nuget\\packages\\microsoft.identity.client\\4.14.0\\microsoft.identity.client.4.14.0.nupkg.sha512",

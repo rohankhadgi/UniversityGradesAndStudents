@@ -134,3 +134,8 @@ C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication
 C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\bin\Debug\net5.0\HotChocolate.Abstractions.dll
+C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\bin\Debug\net5.0\HotChocolate.Language.dll
+C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\bin\Debug\net5.0\HotChocolate.Language.SyntaxTree.dll
+C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\bin\Debug\net5.0\HotChocolate.Language.Utf8.dll
+C:\Users\rohan\Documents\Visual Studio 2022\Projects\GradeCalculationApplication\bin\Debug\net5.0\HotChocolate.Language.Visitors.dll

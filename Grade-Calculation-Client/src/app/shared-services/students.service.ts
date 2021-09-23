@@ -10,6 +10,8 @@ export class StudentsService {
   studentFormData: Student = new Student();
   studentsList: Student[];
 
+  stundentCourses: any[];
+
   readonly baseURL = 'http://localhost:64539/api/Students';
 
   constructor(private httpClient: HttpClient) { }
@@ -20,6 +22,16 @@ export class StudentsService {
 
   updateStudent() {
     return this.httpClient.put(`${this.baseURL}/${this.studentFormData.studentID}`, this.studentFormData);
+  }
+
+  getStudentCourses(studentID: number) {
+    this.httpClient.get(`${this.baseURL}/student/${studentID}/get-student-courses`)
+    .toPromise()
+    .then(val => this.stundentCourses = val as any[]);
+
+    console.log('student courses: ', this.stundentCourses);
+
+    return this.stundentCourses;
   }
 
   refreshStudentsList() {

@@ -1,46 +1,71 @@
 <div class="jumbotron">
     <h1 class="display-4 text-center">Students</h1>
 </div>
-<div class="row">
-    <div class="col-md-6">
-        <app-student-form></app-student-form>
+<div style="padding: 40px;">
+    <div class="row">
+        <div class="col-md-6">
+            <app-student-form></app-student-form>
+        </div>
     </div>
-    <div class="col-md-6">
-        <table class="table">
-            <thead class="thead-light">
-                <tr>
-                    <th>Student Name</th>
-                    <th>Identification Number</th>
-                    <th>CGPA</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let student of studentsService.studentsList">
-                    <td (click)="updateStudent(student)">{{student.studentName}}</td>
-                    <td (click)="updateStudent(student)">{{student.studentNumber}}</td>
-                    <td (click)="updateStudent(student)">{{student.cgpa}}</td>
-                    <td>
-                        <i class="far fa-chevron-down fa-lg text-info" (click)="toggleStudentCourses()"></i>
-                        <table *ngIf="showStudentCourses" class="table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>Course Name</th>
-                                    <th>Credits</th>
-                                    <th>Grade Secured</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let course of student.studentCourses">
-                                    <td>{{course.course.courseName}}</td>
-                                    <td>{{course.course.courseCredit}}</td>
-                                    <td>{{course.grade}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="row">
+        <kendo-grid [kendoGridBinding]="studentsService.studentsList"
+                        [filterable]="true"
+                        [sortable]="true"
+                        [pageSize]="10"
+                        [pageable]="true"
+                        (cellClick)="updateStudent($event)">
+                        <kendo-grid-column field="studentName" title="Course Name"></kendo-grid-column>
+                        <kendo-grid-column field="studentNumber" title="Credits"></kendo-grid-column>
+                        <kendo-grid-column field="cgpa" title="Grade Secured"></kendo-grid-column>
+                        <div *kendoGridDetailTemplate="let dataItem">
+                            <kendo-grid [kendoGridBinding]="getStudentCourses(dataItem.studentID)"
+                                        [filterable]="true"
+                                        [sortable]="true"
+                                        [pageable]="true">
+                                    <kendo-grid-column field="course.description" title="course.Description"></kendo-grid-column>
+                                    <kendo-grid-column field="course.courseName" title="Course Name"></kendo-grid-column>
+                                    <kendo-grid-column field="course.courseCode" title="Code"></kendo-grid-column>
+                                    <kendo-grid-column field="enumGrade" title="Grade"></kendo-grid-column>
+                                    <kendo-grid-column field="course.courseCredit" title="Credits"></kendo-grid-column>
+                            </kendo-grid>
+                        </div>
+            </kendo-grid>
     </div>
 </div>
+
+<!-- <table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>Student Name</th>
+            <th>Identification Number</th>
+            <th>CGPA</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of studentsService.studentsList">
+            <td (click)="updateStudent(student)">{{student.studentName}}</td>
+            <td (click)="updateStudent(student)">{{student.studentNumber}}</td>
+            <td (click)="updateStudent(student)">{{student.cgpa}}</td>
+            <td>
+                <i class="far fa-chevron-down fa-lg text-info" (click)="toggleStudentCourses()"></i>
+                <table *ngIf="showStudentCourses" class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Course Name</th>
+                            <th>Credits</th>
+                            <th>Grade Secured</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let course of student.studentCourses">
+                            <td>{{course.course.courseName}}</td>
+                            <td>{{course.course.courseCredit}}</td>
+                            <td>{{course.grade}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table> -->

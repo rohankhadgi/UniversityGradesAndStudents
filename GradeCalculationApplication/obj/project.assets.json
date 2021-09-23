@@ -2,6 +2,71 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "HotChocolate.Abstractions/11.3.7": {
+        "type": "package",
+        "dependencies": {
+          "HotChocolate.Language": "11.3.7",
+          "Microsoft.Bcl.AsyncInterfaces": "1.1.0",
+          "System.Collections.Immutable": "1.7.0"
+        },
+        "compile": {
+          "lib/net5.0/HotChocolate.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/HotChocolate.Abstractions.dll": {}
+        }
+      },
+      "HotChocolate.Language/11.3.7": {
+        "type": "package",
+        "dependencies": {
+          "HotChocolate.Language.SyntaxTree": "11.3.7",
+          "HotChocolate.Language.Utf8": "11.3.7",
+          "HotChocolate.Language.Visitors": "11.3.7"
+        },
+        "compile": {
+          "lib/net5.0/HotChocolate.Language.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/HotChocolate.Language.dll": {}
+        }
+      },
+      "HotChocolate.Language.SyntaxTree/11.3.7": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.ObjectPool": "3.1.4"
+        },
+        "compile": {
+          "lib/net5.0/HotChocolate.Language.SyntaxTree.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/HotChocolate.Language.SyntaxTree.dll": {}
+        }
+      },
+      "HotChocolate.Language.Utf8/11.3.7": {
+        "type": "package",
+        "dependencies": {
+          "HotChocolate.Language.SyntaxTree": "11.3.7"
+        },
+        "compile": {
+          "lib/net5.0/HotChocolate.Language.Utf8.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/HotChocolate.Language.Utf8.dll": {}
+        }
+      },
+      "HotChocolate.Language.Visitors/11.3.7": {
+        "type": "package",
+        "dependencies": {
+          "HotChocolate.Language.SyntaxTree": "11.3.7",
+          "Microsoft.Extensions.ObjectPool": "3.1.4"
+        },
+        "compile": {
+          "lib/net5.0/HotChocolate.Language.Visitors.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/HotChocolate.Language.Visitors.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -602,6 +667,15 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.ObjectPool/3.1.4": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {}
         }
       },
       "Microsoft.Extensions.Options/5.0.0": {
@@ -2130,6 +2204,76 @@
     }
   },
   "libraries": {
+    "HotChocolate.Abstractions/11.3.7": {
+      "sha512": "03foRBf9YMn9rxzt7UJiAlaQF3SvDXv2crN28RWKVZDwxXiIwBL6FNO1MACjJ6e7IL6CKHm8NGVY+faOYi5iRQ==",
+      "type": "package",
+      "path": "hotchocolate.abstractions/11.3.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "hotchocolate.abstractions.11.3.7.nupkg.sha512",
+        "hotchocolate.abstractions.nuspec",
+        "lib/net5.0/HotChocolate.Abstractions.dll",
+        "lib/netcoreapp3.1/HotChocolate.Abstractions.dll",
+        "lib/netstandard2.0/HotChocolate.Abstractions.dll"
+      ]
+    },
+    "HotChocolate.Language/11.3.7": {
+      "sha512": "fc5Uhv8btcgRupP/HFz8ItsFVK3F0gLiV7CkvywCfdT8bmkTbuDQjFtn4tg0UR3XhhHlUgPs4+1Ce0yUNiQDPw==",
+      "type": "package",
+      "path": "hotchocolate.language/11.3.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "hotchocolate.language.11.3.7.nupkg.sha512",
+        "hotchocolate.language.nuspec",
+        "lib/net5.0/HotChocolate.Language.dll",
+        "lib/netcoreapp3.1/HotChocolate.Language.dll",
+        "lib/netstandard2.0/HotChocolate.Language.dll"
+      ]
+    },
+    "HotChocolate.Language.SyntaxTree/11.3.7": {
+      "sha512": "WgYxQ007vofQcdEYcL7UgAMBdoRKUxFpxeL/qfdsXFfFWa/d3hwQ0jc71JAbTzqMIvODZMQ3YMXxYY6N9XX3Kw==",
+      "type": "package",
+      "path": "hotchocolate.language.syntaxtree/11.3.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "hotchocolate.language.syntaxtree.11.3.7.nupkg.sha512",
+        "hotchocolate.language.syntaxtree.nuspec",
+        "lib/net5.0/HotChocolate.Language.SyntaxTree.dll",
+        "lib/netcoreapp3.1/HotChocolate.Language.SyntaxTree.dll",
+        "lib/netstandard2.0/HotChocolate.Language.SyntaxTree.dll"
+      ]
+    },
+    "HotChocolate.Language.Utf8/11.3.7": {
+      "sha512": "5ESM4No56ebc2RXBJKb/0rKv9EIjwlCxQncK5G2Uh5TShfDHh9D5/6CLnqQ51HIntX8X0fCHEknayQaeOmQ37A==",
+      "type": "package",
+      "path": "hotchocolate.language.utf8/11.3.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "hotchocolate.language.utf8.11.3.7.nupkg.sha512",
+        "hotchocolate.language.utf8.nuspec",
+        "lib/net5.0/HotChocolate.Language.Utf8.dll",
+        "lib/netcoreapp3.1/HotChocolate.Language.Utf8.dll",
+        "lib/netstandard2.0/HotChocolate.Language.Utf8.dll"
+      ]
+    },
+    "HotChocolate.Language.Visitors/11.3.7": {
+      "sha512": "sSMPs+pMwld+mAdB+Z4jxg3tQP7ZXSZ3yQKWgnmAh3OjVKbGqWaPqBbWHrDgX3TB9KTqNoFogNrl0D2nx5GZ1g==",
+      "type": "package",
+      "path": "hotchocolate.language.visitors/11.3.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "hotchocolate.language.visitors.11.3.7.nupkg.sha512",
+        "hotchocolate.language.visitors.nuspec",
+        "lib/net5.0/HotChocolate.Language.Visitors.dll",
+        "lib/netcoreapp3.1/HotChocolate.Language.Visitors.dll",
+        "lib/netstandard2.0/HotChocolate.Language.Visitors.dll"
+      ]
+    },
     "Humanizer.Core/2.8.26": {
       "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "type": "package",
@@ -2981,6 +3125,20 @@
         "microsoft.extensions.logging.abstractions.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.ObjectPool/3.1.4": {
+      "sha512": "ZmgpBTnKA2OSJjtL5A1tNSWAQn8I0ELJMW+oKMZVmVHhjG8IyqlhqkfXT9jxgPp8ddCt4t4oXsKn1HAz+sJO1A==",
+      "type": "package",
+      "path": "microsoft.extensions.objectpool/3.1.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.xml",
+        "microsoft.extensions.objectpool.3.1.4.nupkg.sha512",
+        "microsoft.extensions.objectpool.nuspec"
       ]
     },
     "Microsoft.Extensions.Options/5.0.0": {
@@ -7418,6 +7576,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "HotChocolate.Abstractions >= 11.3.7",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 5.0.10",
       "Microsoft.EntityFrameworkCore >= 5.0.10",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.9",
@@ -7470,6 +7629,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "HotChocolate.Abstractions": {
+            "target": "Package",
+            "version": "[11.3.7, )"
+          },
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
             "target": "Package",
             "version": "[5.0.10, )"

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentCourse } from '../shared-services/studentcourses.model';
 import { Student } from '../shared-services/students.model';
 import { StudentsService } from '../shared-services/students.service';
 
@@ -23,7 +22,13 @@ export class StudentsComponent implements OnInit {
 
   }
 
-  updateStudent(student: Student) {
+  getStudentCourses(courseID: number) {
+    return this.studentsService.getStudentCourses(courseID);
+  }
+
+
+  updateStudent(event: any) {
+    const student = event.dataItem;
     this.studentsService.studentFormData = Object.assign({}, student);
   }
   

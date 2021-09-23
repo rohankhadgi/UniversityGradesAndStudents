@@ -8,7 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'GradeCalculationClient';
 
-  selectedTab() {
-    
+  navLinks = [ 
+    { path: 'courses', label: 'Courses' },
+    { path: 'students', label: 'Students' }
+  ];
+
+  constructor() {
+
   }
 }

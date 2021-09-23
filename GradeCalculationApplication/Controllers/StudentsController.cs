@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GradeCalculationApplication.Models;
 using GradeCalculationApplication.Models.Entities;
+using GradeCalculationApplication.Services;
+using System.Threading;
 
 namespace GradeCalculationApplication.Controllers
 {
@@ -21,14 +23,12 @@ namespace GradeCalculationApplication.Controllers
             _context = context;
         }
 
-        // GET: api/Students
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<StudentEntity>>> GetStudents()
+        public async Task<ActionResult> GetStudents(CancellationToken cancellationToken)
         {
-            return await _context.Students.ToListAsync();
+            return Ok(await _context.Students.ToListAsync(cancellationToken));
         }
 
-        // GET: api/Students/5
         [HttpGet("{id}")]
         public async Task<ActionResult<StudentEntity>> GetStudentEntity(int id)
         {
@@ -42,8 +42,6 @@ namespace GradeCalculationApplication.Controllers
             return studentEntity;
         }
 
-        // PUT: api/Students/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStudentEntity(int id, StudentEntity studentEntity)
         {
@@ -73,8 +71,6 @@ namespace GradeCalculationApplication.Controllers
             return NoContent();
         }
 
-        // POST: api/Students
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<StudentEntity>> PostStudentEntity(StudentEntity studentEntity)
         {
@@ -108,7 +104,6 @@ namespace GradeCalculationApplication.Controllers
             return Ok();
         }
 
-        // DELETE: api/Students/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteStudentEntity(int id)
         {
@@ -123,6 +118,21 @@ namespace GradeCalculationApplication.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("student/{studentID}/get-student-courses")]
+        public async Task<IActionResult> GetStudentCourses(int stundentID, CancellationToken cancellationToken)
+        {
+            var studentCourses = await _context.StudentCourses.Where(sc => sc.StudentID == stundentID).ToListAsync(cancellationToken);
+
+            return Ok(studentCourses);
+        }
+
+        //[HttpGet("student/{studentID}/get-all-student-courses")]
+        //public async Task<IActionResult> GetStudentCourses(int studentID, CancellationToken cancellationToken)
+        //{
+        //    var result = await _studentsServices.GetAllEnrolledStudentsInCourse(studentID, cancellationToken);
+        //    return Ok(result);
+        //}
 
         private bool StudentEntityExists(int id)
         {

@@ -10,6 +10,18 @@ import { ToastrModule } from 'ngx-toastr';
 import { StudentsComponent } from './students/students.component';
 import { StudentFormComponent } from './students/student-form/student-form.component'
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTabsModule } from '@angular/material/tabs';
+import { RouterModule, Routes } from '@angular/router';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { MatCardModule } from '@angular/material/card';
+
+
+const appRoutes: Routes = [
+  { path: 'courses', component: CoursesComponent },
+  { path: 'students', component: StudentsComponent },
+];
 
 @NgModule({
   declarations: [
@@ -24,8 +36,17 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgbModule,
+    MatTabsModule,
+    MatCardModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true }
+    ),
     ToastrModule.forRoot(),
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    InputsModule,
+    GridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

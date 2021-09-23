@@ -1,28 +1,56 @@
 <div class="jumbotron">
     <h1 class="display-4 text-center">Courses</h1>
 </div>
-<div class="row">
-    <div class="col-md-6">
-        <app-course-form></app-course-form>
-    </div>
-    <div class="col-md-6">
-        <table class="table">
-            <thead class="thead-light">
-                <tr>
-                    <th>Description</th>
-                    <th>Course Name</th>
-                    <th>Code</th>
-                    <th>Credits</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let course of coursesService.coursesList">
-                    <td (click)="updateCourse(course)">{{course.description}}</td>
-                    <td (click)="updateCourse(course)">{{course.courseName}}</td>
-                    <td (click)="updateCourse(course)">{{course.courseCode}}</td>
-                    <td (click)="updateCourse(course)">{{course.courseCredit}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+
+<div style="padding: 40px;">
+    <div class="row">
+        <div class="col-md-6">
+            <app-course-form></app-course-form>
+            <br />
+        </div>
+        <div class="row">
+            <kendo-grid [kendoGridBinding]="coursesService.coursesList"
+                        [filterable]="true"
+                        [sortable]="true"
+                        [pageSize]="10"
+                        [pageable]="true"
+                        (cellClick)="updateCourse($event)">
+                        <kendo-grid-column field="description" title="Description"></kendo-grid-column>
+                        <kendo-grid-column field="courseName" title="Course Name"></kendo-grid-column>
+                        <kendo-grid-column field="courseCode" title="Code"></kendo-grid-column>
+                        <kendo-grid-column field="courseCredit" title="Credits"></kendo-grid-column>
+                        <div *kendoGridDetailTemplate="let dataItem">
+                            <kendo-grid [kendoGridBinding]="getEnrolledStudents(dataItem.courseID)"
+                                        [filterable]="true"
+                                        [sortable]="true"
+                                        [pageable]="true">
+                                <kendo-grid-column field="student.studentName" title="Student Name"></kendo-grid-column>
+                                <kendo-grid-column field="student.studentNumber" title="Student Number"></kendo-grid-column>
+                                <kendo-grid-column field="enumGrade" title="Grade"></kendo-grid-column>
+                                <kendo-grid-column field="courseCredit" title="Credits"></kendo-grid-column>
+                            </kendo-grid>
+                        </div>
+            </kendo-grid>
+        </div>
+    <!-- </div>
+    <div class="row">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Description</th>
+                        <th>Course Name</th>
+                        <th>Code</th>
+                        <th>Credits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let course of coursesService.coursesList">
+                        <td (click)="updateCourse(course)">{{course.description}}</td>
+                        <td (click)="updateCourse(course)">{{course.courseName}}</td>
+                        <td (click)="updateCourse(course)">{{course.courseCode}}</td>
+                        <td (click)="updateCourse(course)">{{course.courseCredit}}</td>
+                    </tr>
+                </tbody>
+            </table>
+    </div> -->
 </div>

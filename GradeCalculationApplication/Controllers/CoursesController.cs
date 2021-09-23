@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GradeCalculationApplication.Models;
 using GradeCalculationApplication.Models.Entities;
+using GradeCalculationApplication.Services;
+using System.Threading;
 
 namespace GradeCalculationApplication.Controllers
 {
@@ -21,14 +23,12 @@ namespace GradeCalculationApplication.Controllers
             _context = context;
         }
 
-        // GET: api/Courses
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CourseEntity>>> GetCourses()
         {
             return await _context.Courses.ToListAsync();
         }
 
-        // GET: api/Courses/5
         [HttpGet("{id}")]
         public async Task<ActionResult<CourseEntity>> GetCourseEntity(int id)
         {
@@ -42,8 +42,6 @@ namespace GradeCalculationApplication.Controllers
             return courseEntity;
         }
 
-        // PUT: api/Courses/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCourseEntity(int id, CourseEntity courseEntity)
         {
@@ -73,8 +71,14 @@ namespace GradeCalculationApplication.Controllers
             return NoContent();
         }
 
-        // POST: api/Courses
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpGet("course/{courseID}/get-enrolled-students")]
+        public async Task<IActionResult> GetEnrolledStudentsInCourse(int courseID, CancellationToken cancellationToken)
+        {
+            var enrolledStudents = await _context.StudentCourses.Where(sc => sc.CourseID == courseID).ToListAsync(cancellationToken);
+
+            return Ok(enrolledStudents);
+        }
+
         [HttpPost]
         public async Task<ActionResult<CourseEntity>> PostCourseEntity(CourseEntity courseEntity)
         {
@@ -84,7 +88,6 @@ namespace GradeCalculationApplication.Controllers
             return CreatedAtAction("GetCourseEntity", new { id = courseEntity.CourseID }, courseEntity);
         }
 
-        // DELETE: api/Courses/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCourseEntity(int id)
         {
@@ -99,6 +102,13 @@ namespace GradeCalculationApplication.Controllers
 
             return NoContent();
         }
+
+        //[HttpGet("course/{courseID}/get-all-enrolled-students")]
+        //public async Task<IActionResult> GetAllEnrolledStudents(int courseID)
+        //{
+        //    var result = await _coursesServices.GetAllEnrolledStudentsInCourse(courseID);
+        //    return Ok(result);
+        //}
 
         private bool CourseEntityExists(int id)
         {
